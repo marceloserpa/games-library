@@ -15,7 +15,7 @@ export class GameEditComponent implements OnInit, OnDestroy {
   id:number;
   gameForm: FormGroup;
 
-  constructor( private route: ActivatedRoute, private gameService: GameService) { }
+  constructor( private route: ActivatedRoute, private router: Router, private gameService: GameService) { }
 
 
   ngOnInit() {
@@ -32,7 +32,9 @@ export class GameEditComponent implements OnInit, OnDestroy {
       this.gameService.updateGame(this.id, game).subscribe(() => {
       });
     } else {
-      this.gameService.saveGame(game).subscribe(() => {
+      this.gameService.saveGame(game).map(response => response.json()).subscribe(games => {
+        let lastID = games.length -1;        
+        this.router.navigate(['games', lastID]);
       });
     }
 

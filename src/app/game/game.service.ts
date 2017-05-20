@@ -33,6 +33,7 @@ export class GameService {
   }
 
   saveGame(game: Game){
+    game['id'] = this.games.length + 1
     this.games.push(game);
     this.newGames.next(this.games);
     return this.http.put(GameService.API_GAMES,  this.games);
