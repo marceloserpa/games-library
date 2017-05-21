@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-xs-10">
     <hr>
-    <ul class="list-group" *ngFor="let game of rentedGames">
+    <ul class="list-group" *ngFor="let rent of rentedGames">
       <a style="cursor: pointer" class="list-group-item">
-        {{game.name}} to {{game.returnDate}}
+        {{rent.game.title}} to {{rent.game.returnDate}}
       </a>
     </ul>
   </div>

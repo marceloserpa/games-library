@@ -2,8 +2,8 @@ export class RentService {
 
   rentedGames = [];
 
-  rent(game){
-    this.rentedGames.push(game);
+  rent(game, user){
+    this.rentedGames.push({game, user});
   }
 
   getRentedGames(){

@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <fieldset>
+        <legend>Rent this game</legend>
+        <div class="row">
+          <div class="col-sm-5 form-group">
+            <label for="user">User</label>
+            <select class="form-control" id="user" name="user" required [ngModel]>
+              <option *ngFor="let user of users" [ngValue]="user">{{user.email}}</option>
+            </select>
+          </div>
+          <div class="col-sm-5 form-group">
+            <label for="returnDate">Date to return</label>
+            <input type="text" id="returnDate" name="returnDate" ngModel class="form-control"
+            date
+            required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <button type="submit" class="btn btn-success" [disabled]="!f.valid">rent</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

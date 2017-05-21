@@ -19,6 +19,7 @@ import { GameStartComponent } from './game/game-start/game-start.component';
 import { UsersComponent } from './manage/users/users.component';
 import { UserEditComponent } from './manage/users/user-edit/user-edit.component';
 import { UserService } from './manage/users/user.service';
+import { RentFormComponent } from './rent/rent-form/rent-form.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { UserService } from './manage/users/user.service';
     GameEditComponent,
     GameStartComponent,
     UsersComponent,
-    UserEditComponent
+    UserEditComponent,
+    RentFormComponent
   ],
   imports: [
     BrowserModule,
