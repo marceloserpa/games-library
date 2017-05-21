@@ -17,7 +17,6 @@ export class GameEditComponent implements OnInit, OnDestroy {
 
   constructor( private route: ActivatedRoute, private router: Router, private gameService: GameService) { }
 
-
   ngOnInit() {
     this.route.params.subscribe((params:Params) => {
       this.id = +params['id'];
@@ -30,6 +29,7 @@ export class GameEditComponent implements OnInit, OnDestroy {
     let game: Game = this.gameForm.value;
     if(this.editMode){
       this.gameService.updateGame(this.id, game).subscribe(() => {
+        this.router.navigate(['games', this.id]);
       });
     } else {
       this.gameService.saveGame(game).map(response => response.json()).subscribe(games => {
@@ -37,9 +37,11 @@ export class GameEditComponent implements OnInit, OnDestroy {
         this.router.navigate(['games', lastID]);
       });
     }
-
   }
 
+  onCancel(){
+    this.router.navigate(['games', this.id]);
+  }
 
   private initForm(){
    let gameTitle = '';
