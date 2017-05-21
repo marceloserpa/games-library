@@ -7,6 +7,8 @@ import 'rxjs/Rx';
 @Injectable()
 export class UserService {
 
+  static readonly API_USERS: string = "https://game-library-15c06.firebaseio.com/users.json";
+
   users:User[] = [];
 
   startedEditing =new Subject<number>();
@@ -23,7 +25,7 @@ export class UserService {
   }
 
   fetchUsers(){
-    return this.http.get('https://game-library-6da4c.firebaseio.com/users.json')
+    return this.http.get(UserService.API_USERS)
     .map((resp: Response) => {
       const users: User[] = resp.json();
       if(users){
@@ -53,7 +55,7 @@ export class UserService {
   }
 
   private saveOnServer(){
-    this.http.put('https://game-library-6da4c.firebaseio.com/users.json', this.users).subscribe(() => {
+    this.http.put(UserService.API_USERS, this.users).subscribe(() => {
 
     });
   }
