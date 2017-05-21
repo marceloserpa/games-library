@@ -6,6 +6,8 @@
     <hr />
 <div class="row">
   <div class="col-xs-12">
-    <app-game-item *ngFor="let item of games; let i = index" [game] = "item" [index]="i"></app-game-item>
+    <ng-container *ngIf="games">
+      <app-game-item *ngFor="let item of games; let i = index" [game] = "item" [index]="i"></app-game-item>
+    </ng-container>
   </div>
 </div>
